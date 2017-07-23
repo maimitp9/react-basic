@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Layout from './layout';
+import Clock from './clock';
 
 class App extends Component {
   constructor(props) {
@@ -14,10 +16,12 @@ class App extends Component {
   render() {
     return (
       <div>
+				<Clock />
+				<Layout />
+				<br/>
         Hello {this.getName("Patel")}
         <p>{this.say}</p>
         User: {formatName(user)}
-
         <Welcome name="Welcome Component"/>
         <Comment date={comment.date} text={comment.text} author={comment.author}/>
       </div>
@@ -44,13 +48,13 @@ const comment = {
 	}
 };
 
-function tick(){
-	const element = (
-		<h1>Clock: {new Date().toLocaleTimeString()}</h1>
-	);
-
-	ReactDOM.render(element, document.getElementById('clock'));
-}
+// function tick(){
+// 	const element = (
+// 		<h1>Clock: {new Date().toLocaleTimeString()}</h1>
+// 	);
+// 	ReactDOM.render(element, document.getElementById('clock'));
+// }
+// setInterval(tick,1000);
 
 function Welcome(props){
 	return <h1>{props.name}</h1>
@@ -88,6 +92,4 @@ function formateDate(date){
 	return date.toLocaleTimeString();
 }
 
-setInterval(tick,1000);
 export default App;
-
