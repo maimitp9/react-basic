@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './layout';
 import Clock from './clock';
+import Toggle from './toggle'
 
 class App extends Component {
   constructor(props) {
@@ -18,12 +19,14 @@ class App extends Component {
       <div>
 				<Clock />
 				<Layout />
+        <Toggle />
 				<br/>
         Hello {this.getName("Patel")}
         <p>{this.say}</p>
         User: {formatName(user)}
         <Welcome name="Welcome Component"/>
         <Comment date={comment.date} text={comment.text} author={comment.author}/>
+
       </div>
     );
   }
