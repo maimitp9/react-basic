@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Layout from './layout';
 import Clock from './clock';
-import Toggle from './toggle'
+import Toggle from './toggle';
+import Comment from './comment';
+
 
 class App extends Component {
   constructor(props) {
@@ -63,36 +65,7 @@ function Welcome(props){
 	return <h1>{props.name}</h1>
 }
 
-function Avatar(props){
-	return(
-		<span>
-			<b>Profile Picture:</b> <img src={props.user.avatarUrl} alt={props.user.fName} />
-		</span>
-	);
-}
 
-function UserInfo(props){
-	return(
-		<div class="user-info">
-			<Avatar user={props.user} />
-			<p>Comment by: {props.user.fName} {props.user.lName}</p>
-		</div>
-	);
-}
 
-function Comment(props){
-	return(
-		<div class="comment-info">
-		<h3>Comment Component</h3>
-			<UserInfo user={props.author}/>
-			<p><b>Commented Date:</b> {formateDate(props.date)}</p>
-			<p><b>Comment Text:</b> {props.text}</p>
-		</div>
-	);
-}
-
-function formateDate(date){
-	return date.toLocaleTimeString();
-}
 
 export default App;

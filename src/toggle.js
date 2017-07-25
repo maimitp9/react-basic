@@ -4,8 +4,6 @@ export default class Toggle extends Component {
   constructor(){
     super();
     this.state = { isToggeleOn: true };
-    // This binding is necessary to make `this` work in the callback
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(){
@@ -17,7 +15,7 @@ export default class Toggle extends Component {
     return(
       <div>
         <br/>
-        <button onClick={this.handleClick} >
+        <button onClick={this.handleClick.bind(this)} >
           <h3>{this.state.isToggeleOn ? 'ON' : 'OFF'}</h3>
         </button>
       </div>
