@@ -79,15 +79,4 @@ const comment = {
 // }
 // setInterval(tick,1000);
 
-<<<<<<< HEAD
 export default withRouter(App);
-=======
-function Welcome(props){
-	return <h1>{props.name}</h1>
-}
-
-
-
-
-export default App;
->>>>>>> cd5577c6f5112aae832d381146886af68cdc2911
