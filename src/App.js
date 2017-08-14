@@ -1,29 +1,49 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Layout from './layout';
+import { withRouter, Link} from 'react-router-dom';
+import { Nav, Navbar } from 'react-bootstrap';
+import Routes from './Routes';
+
+import RouteNavItem  from './components/RouteNavItem';
 import Clock from './clock';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.say = "Say Hello!!"
   }
 
   getName(surname){
     return "Maimit " + surname + "!!";
   }
 
+	handleClick(e){
+		e.preventDefault();
+		this.props.history.push(e.currentTarget.getAttributes('href'));
+	}
+
   render() {
     return (
-      <div>
+      <div className="App container">
+				<Navbar fluid>
+					<Navbar.Header>
+						<Navbar.Brand>
+							<Link to="/">Home</Link>
+						</Navbar.Brand>
+						<Navbar.Toggle />
+					</Navbar.Header>
+					<Navbar.Collapse>
+						<Nav pullRight>
+							<RouteNavItem onClink={this.handleClick.bind(this)} href="/comments">Commemts</RouteNavItem>
+							<RouteNavItem onClink={this.handleClick.bind(this)} href="/contact">ContactUs</RouteNavItem>
+						</Nav>
+					</Navbar.Collapse>
+				</Navbar>
 				<Clock />
-				<Layout />
-				<br/>
-        Hello {this.getName("Patel")}
-        <p>{this.say}</p>
-        User: {formatName(user)}
-        <Welcome name="Welcome Component"/>
-        <Comment date={comment.date} text={comment.text} author={comment.author}/>
+				<div className="clearfix"></div>
+				<Routes />
+				<br></br><hr />
+				<footer>
+					Created By: {formatName(user)}
+				</footer>
       </div>
     );
   }
@@ -56,40 +76,4 @@ const comment = {
 // }
 // setInterval(tick,1000);
 
-function Welcome(props){
-	return <h1>{props.name}</h1>
-}
-
-function Avatar(props){
-	return(
-		<span>
-			<b>Profile Picture:</b> <img src={props.user.avatarUrl} alt={props.user.fName} />
-		</span>
-	);
-}
-
-function UserInfo(props){
-	return(
-		<div class="user-info">
-			<Avatar user={props.user} />
-			<p>Comment by: {props.user.fName} {props.user.lName}</p>
-		</div>
-	);
-}
-
-function Comment(props){
-	return(
-		<div class="comment-info">
-		<h3>Comment Component</h3>
-			<UserInfo user={props.author}/>
-			<p><b>Commented Date:</b> {formateDate(props.date)}</p>
-			<p><b>Comment Text:</b> {props.text}</p>
-		</div>
-	);
-}
-
-function formateDate(date){
-	return date.toLocaleTimeString();
-}
-
-export default App;
+export default withRouter(App);

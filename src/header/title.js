@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class Title extends Component{
 	render(){
 		return(
-			<div>{this.props.title}</div>
+			<div><h1>WelCome {this.props.title}!</h1></div>
 		);
 	}
 }

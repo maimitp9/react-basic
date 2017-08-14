@@ -22,7 +22,10 @@ export default class Clock extends Component{
 
 	render(){
 		return(
-			<h1>Time: {this.state.date.toLocaleTimeString()}</h1>
+			<div className="col-md-12">
+				<h1 className="pull-right text-primary">Time: {this.state.date.toLocaleTimeString()}</h1>
+			</div>
 		);
+
 	}
 }

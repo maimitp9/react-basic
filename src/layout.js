@@ -4,7 +4,7 @@ import Header from './header'
 export default class Layout extends Component{
   constructor(){
     super();
-    this.state = { title: "Welcome"};
+    this.state = { title: "Maimit"};
   }
 
   changeTitle(title){
